@@ -27,9 +27,11 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
-
+    public final int DELAY = 1000;
     private final int ROWS = 5;
     private final int COLS = 3;
+
+    private final int LIFE = 3;
 
     private AppCompatImageView main_IMG_background;
     private ShapeableImageView[] main_IMG_hearts;
@@ -47,14 +49,39 @@ public class MainActivity extends AppCompatActivity {
         findViews();
         gameManager = new GameManager(main_IMG_hearts.length,ROWS,COLS);
         viewDog();
-        refreshUI();
+        setButtons();
+        start();
+    }
+
+    private void start() {
+        final Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                handler.postDelayed(this, 2100);
+                gameManager.randomBall();
+                refreshUI();
+            }
+        }, DELAY);
+
+        runOnUiThread(new Runnable() {
+            public void run() {
+                handler.postDelayed(this,1700);
+                gameManager.updateBoard();
+            }
+        });
     }
 
     private void refreshUI() {
         if(gameManager.isCrashed()){
             gameManager.crash();
             if(gameManager.isLose()){
-                openFinishScreen();
+                toast("GAME OVER!");
+                gameManager.setLife(LIFE);
+                for(int i = 0;i < main_IMG_hearts.length;i++){
+                    main_IMG_hearts[i].setVisibility(View.VISIBLE);
+                }
+
             }
             else{
                 toast("Lost Life!");
@@ -64,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+        gameManager.randomBall();
         viewBoard();
     }
 
@@ -126,11 +154,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, st, Toast.LENGTH_SHORT).show();
     }
 
-    private void openFinishScreen() {
-        Intent scoreIntent = new Intent("Game Over!");
-        startActivity(scoreIntent);
-        finish();
-    }
 
 
     private void findViews() {

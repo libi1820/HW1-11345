@@ -65,9 +65,14 @@ public class GameManager {
         }
     }
 
-    private void randomBall(){
+    public void randomBall(){
+        for(int i =0;i<cols;i++){
+            if(ballBoard[0][i] == 1){
+                return;
+            }
+        }
         int randomCol = new Random().nextInt(cols);
-        ballBoard[0][randomCol-1] = 1;
+        ballBoard[0][randomCol] = 1;
     }
 
     public boolean isCrashed(){
@@ -82,8 +87,7 @@ public class GameManager {
         return life == 0;
     }
 
-
-
-
-
+    public void setLife(int life) {
+        this.life = life;
+    }
 }
