@@ -28,7 +28,7 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
     public final int DELAY = 1000;
-    private final int ROWS = 5;
+    private final int ROWS = 6;
     private final int COLS = 3;
 
     private final int LIFE = 3;
@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
             main_IMG_ball[2] = new ShapeableImageView [] {findViewById(R.id.main_IMG_ball7), findViewById(R.id.main_IMG_ball8), findViewById(R.id.main_IMG_ball9)};
             main_IMG_ball[3] = new ShapeableImageView [] {findViewById(R.id.main_IMG_ball10), findViewById(R.id.main_IMG_ball11), findViewById(R.id.main_IMG_ball12)};
             main_IMG_ball[4] = new ShapeableImageView [] {findViewById(R.id.main_IMG_ball13), findViewById(R.id.main_IMG_ball14), findViewById(R.id.main_IMG_ball15)};
+            main_IMG_ball[5] = new ShapeableImageView [] {findViewById(R.id.main_IMG_ball16), findViewById(R.id.main_IMG_ball17), findViewById(R.id.main_IMG_ball18)};
             for(int i=0;i<ROWS;i++){
                 for(int j=0;j<COLS;j++){
                     main_IMG_ball[i][j].setVisibility(View.INVISIBLE);
