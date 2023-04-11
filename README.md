@@ -1,6 +1,10 @@
 # HW1
  
 
-https://user-images.githubusercontent.com/101002314/231087008-95ffc75a-5613-4dcb-8d8e-0dbb270e1b9f.mp4
+
+
+https://user-images.githubusercontent.com/101002314/231087285-bf987aaf-963a-47f5-a74d-44e1a3075344.mp4
+
+
 
 
